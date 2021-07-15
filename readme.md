@@ -3,7 +3,7 @@ Web app for process managment. The system allows create, launch an stop processs
 
 #Requirements
 Nginx or Apache (Nginx recommended) web server. An example of the nginx sites-available configuration file is included in the repository.
-PHP 7.4, MariaDB 10.3.29
+PHP 7.4, MariaDB 10.3.29, Nodejs v10.19.0+.
 
 ##Setup
 - Install PHP 7.4 with all the Laravel requirements and the fpm module for Nginx.
