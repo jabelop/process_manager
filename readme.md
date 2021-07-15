@@ -12,6 +12,7 @@ PHP 7.4, MariaDB 10.3.29, Nodejs v10.19.0+.
 - Install MariaDB 10.3.29, and create a database and an user, those values will be used for the Laravel application configuration file.  
 - Clone this repository on your local machine, and install the laravel required dependencies.
 - Make a copy of the ".env.example" file, name it ".env" and fill with the right values for your installation for the database setup.
-- run the migrations.
-- run the seeder.
+- Run the migrations.
+- Run the seeder.
+- Go to frontend public run npm install
 
