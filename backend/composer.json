@@ -1,11 +1,11 @@
 {
-    "name": "laravel/laravel",
+    "name": "jabelop/process_manager",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "process manager web app backend.",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "^7.3|^8.0",
+        "php": "^7.4|^8.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
