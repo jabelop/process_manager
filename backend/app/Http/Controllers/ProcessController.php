@@ -153,4 +153,34 @@ class ProcessController extends Controller
         return response()->noContent($responseCode);
         
     }
+
+    /**
+     * update finished process with its output and result status
+     * 
+     * @param string $id, the process id to start
+     */
+    public function finishedProcess($id, Request $request) {
+
+        $status = $request->input('status');
+        $output = $request->input('output');
+        $finishedAt = $request->input('finished_at');
+
+        $responseCode = 200;
+
+        try {
+            $process = $this->repository->findWithProcessIdField($id);
+            
+            $this->repository->update([
+                'status' => $status, 
+                'output' => $output, 
+                'finished_at' => $finishedAt
+            ], $process->id);
+
+        } catch (ModelNotFoundException $e) {
+            $responseCode = 404;
+        }
+
+        return response()->noContent($responseCode);
+
+    }
 }

@@ -19,6 +19,7 @@ Route::post('process', 'App\Http\Controllers\ProcessController@postProcess');
 Route::get('process', 'App\Http\Controllers\ProcessController@getProcessList');
 
 Route::post('process/{id}/start', 'App\Http\Controllers\ProcessController@startProcess');
+Route::post('process/{id}/finished', 'App\Http\Controllers\ProcessController@finishedProcess');
 
 //process type routes
 Route::get('process_type', 'App\Http\Controllers\ProcessTypeController@getProcessTypeList');
