@@ -98,4 +98,14 @@ class ProcessController extends Controller
         }
     }
     
+    /**
+     * get a new process.
+     *
+     * @param  Request  $request
+     * 
+     * @return string, the JSON request with the result
+     */
+    public function getProcessList(Request $request) {
+        return $this->repository->all();
+    }
 }

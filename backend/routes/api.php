@@ -16,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 
 // process routes
 Route::post('process', 'App\Http\Controllers\ProcessController@postProcess');
+Route::get('process', 'App\Http\Controllers\ProcessController@getProcessList');
+
