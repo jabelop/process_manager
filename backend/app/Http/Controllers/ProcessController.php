@@ -108,4 +108,49 @@ class ProcessController extends Controller
     public function getProcessList(Request $request) {
         return $this->repository->all();
     }
+
+    /**
+     * start a process
+     * 
+     * @param string $id, the process id to start
+     */
+    public function startProcess($id) {
+        
+        $responseCode = 200;
+        try {
+
+            $process = $this->repository->findWithProcessIdField($id);
+
+            $processType = $this->processTypeRepository->findWithProcessTypeField($process->type);
+            
+            $this->repository->update(['status' => self::STARTED], $process->id);
+            
+            $processCommand = escapeshellcmd('node '.Utilities::getProcessesPath().$processType['command'].' "'.$process->input.'"');
+            
+            $output = str_replace("\n",'', shell_exec($processCommand));
+    
+            if (is_numeric($output)) {
+
+                $this->repository->update([
+                    'output' => $output, 
+                    'status' => self::FINISHED, 
+                    'finished_at' => date('Y-m-d H:i:s')
+                ], $process->id);
+
+            }
+            else {
+                $this->repository->update([
+                    'output' => $output, 
+                    'status' => self::ERROR,
+                    'finished_at' => date('Y-m-d H:i:s')
+                ], $process->id);
+            }
+
+        } catch (ModelNotFoundException $e) {
+            $responseCode = 404;
+        }
+       
+        return response()->noContent($responseCode);
+        
+    }
 }

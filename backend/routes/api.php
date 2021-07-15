@@ -18,5 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('process', 'App\Http\Controllers\ProcessController@postProcess');
 Route::get('process', 'App\Http\Controllers\ProcessController@getProcessList');
 
+Route::post('process/{id}/start', 'App\Http\Controllers\ProcessController@startProcess');
+
 //process type routes
 Route::get('process_type', 'App\Http\Controllers\ProcessTypeController@getProcessTypeList');
