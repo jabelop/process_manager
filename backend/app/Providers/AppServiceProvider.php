@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Http\Helpers\Response\ApiResponse;
+
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +15,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(
+            'App\Repositories\Process\ProcessRepositoryInterface',
+            'App\Repositories\Process\ProcessRepository'
+        );
+
+        $this->app->bind(ResponseInterface::class, function () {
+            return new ApiResponse();
+        });
     }
 
     /**
