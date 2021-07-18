@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { HomePage } from "./Components/HomePage";
+import { CreateProcessPage } from './Components/CreateProcessPage';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 
 
@@ -24,6 +25,7 @@ function App() {
         </Navbar>
         <Switch>
           <Route exact path="/" component={HomePage} />
+          <Route path="/create_process" component={CreateProcessPage} />
         </Switch>
       </Router>
     </div>
